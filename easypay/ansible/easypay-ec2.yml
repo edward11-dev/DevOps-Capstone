@@ -33,21 +33,21 @@
       aws_access_key: "{{ec2_access_key}}"
       aws_secret_key: "{{ec2_secret_key}}"
       region: "{{ region }}"
-      key_material: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"
+      key_material: "{{ lookup('file', '/Users/edwardhanks/.ssh/id_rsa.pub') }}"
 
- - name: Create an EC2 instance
+  - name: Create an EC2 instance
     ec2:
       key_name: ec2-easypay-key
       aws_access_key: "{{ec2_access_key}}"
       aws_secret_key: "{{ec2_secret_key}}"
       region: "{{ region }}"
-      group_id: "{{ firewall_sg.group_id }}"
+      group_id: sg-0b143620be13fb012
       instance_type: t2.micro
-      image: ami-08d4ac5b634553e16
+      image: ami-0149b2da6ceec4bb0
       wait: yes
       instance_tags:
-          Name: ec2-easypay
-      count_tag: Name
+        Name: ec2_easypay-key
+      count_tag: Name        
       exact_count: 1
       vpc_subnet_id: subnet-02eba492cde6d5305
       assign_public_ip: yes

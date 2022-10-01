@@ -1,6 +1,6 @@
 ---
 - hosts: webservers
-  remote_user: root
+  become: true
   gather_facts: yes
 
   tasks:
@@ -53,7 +53,7 @@
    - name: Reboot all the kubernetes nodes.
      reboot:
        post_reboot_delay: 10
-       reboot_timeout: 40
-       connect_timeout: 60
+       reboot_timeout: 60
+       connect_timeout: 80
        test_command: uptime
 
