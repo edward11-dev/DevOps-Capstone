@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: springboot
+  name: springboot
+  namespace: easypay
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot
+      role: frontend
+  template:
+    metadata:
+      labels:
+        app: springboot
+        role: frontend
+    spec:
+      containers:
+      - image: bgstahl/gs-spring-boot-docker:version1
+        name: springboot
+        ports:
+        - containerPort: 8080
+          name: springboot
+        resources:
+           limits:
+             cpu: 200m  ## 20% of the 1 core cpu = 1000 milli cpu on the vm
+
