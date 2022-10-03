@@ -3,23 +3,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: springboot
-  name: springboot
+    app: spring-docker
+  name: spring-docker
   namespace: easypay
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: springboot
+      app: spring-docker
       role: frontend
   template:
     metadata:
       labels:
-        app: springboot
+        app: spring-docker
         role: frontend
     spec:
       containers:
-      - image: bgstahl/gs-spring-boot-docker:version1
+      - image: profed11/spring-boot-docker:latest
         name: springboot
         ports:
         - containerPort: 8080

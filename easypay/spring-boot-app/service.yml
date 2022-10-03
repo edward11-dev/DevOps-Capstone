@@ -4,12 +4,12 @@ kind: Service
 metadata:
   labels:
     app: 
-  name: springboot
+  name: spring-docker
   namespace: easypay
 spec:
   type: NodePort
   ports:
      - port: 8080
   selector:
-    app: springboot
+    app: spring-docker
   
